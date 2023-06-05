@@ -219,7 +219,7 @@ export default defineComponent({
             this.tempTime = time;
         },
         async finishInput() {
-            await this.nocturne.ccLib.setTime(this.tempTime);
+            await this.nocturne.player.setTime(this.tempTime);
             await this.syncAll();
         },
         formatTime(time: number | string) {
@@ -239,20 +239,20 @@ export default defineComponent({
             return `${value.toFixed(1)}x`;
         },
         async syncAll() {
-            this.globalStore.currentStatus = await this.nocturne.ccLib.getPlayStatus();
-            this.globalStore.currentLength = await this.nocturne.ccLib.getLength();
-            this.globalStore.currentTime = await this.nocturne.ccLib.getTime();
-            this.globalStore.currentVolume = await this.nocturne.ccLib.getVolume();
-            this.globalStore.currentSpeed = await this.nocturne.ccLib.getSpeed();
+            this.globalStore.currentStatus = await this.nocturne.player.getPlayStatus();
+            this.globalStore.currentLength = await this.nocturne.player.getLength();
+            this.globalStore.currentTime = await this.nocturne.player.getTime();
+            this.globalStore.currentVolume = await this.nocturne.player.getVolume();
+            this.globalStore.currentSpeed = await this.nocturne.player.getSpeed();
             this.tempVolume = this.currentVolume;
             this.tempSpeed = this.currentSpeed;
         },
         async pause() {
-            await this.nocturne.ccLib.pause();
+            await this.nocturne.player.pause();
             await this.syncAll();
         },
         async resume() {
-            await this.nocturne.ccLib.resume();
+            await this.nocturne.player.resume();
             await this.syncAll();
         },
         async setDeltaTime(deltaTime: number) {
@@ -263,21 +263,21 @@ export default defineComponent({
                 return;
             }
             const time = this.currentTime + deltaTime;
-            await this.nocturne.ccLib.setTime(time);
+            await this.nocturne.player.setTime(time);
             await this.syncAll();
         },
         async setVolume(volume: number) {
-            await this.nocturne.ccLib.setVolume(volume);
+            await this.nocturne.player.setVolume(volume);
             await this.syncAll();
         },
         async setSpeed(speed: number) {
-            await this.nocturne.ccLib.setSpeed(speed);
+            await this.nocturne.player.setSpeed(speed);
             await this.syncAll();
         },
     },
     mounted() {
         this.timerId = window.setInterval(async () => {
-            this.globalStore.currentTime = await this.nocturne.ccLib.getTime();
+            this.globalStore.currentTime = await this.nocturne.player.getTime();
             if (this.currentTime > this.currentLength) {
                 this.$emit('playNext');
             }

@@ -44,7 +44,7 @@
 
 <script lang="ts">
 import { useGlobalStore } from '@/stores/global';
-import type { models } from '@nocturne/fake-backend';
+import type { models } from '@nocturne/backend';
 import { mapState } from 'pinia';
 import { defineComponent, ref } from 'vue';
 import { Back } from '@element-plus/icons-vue';
@@ -99,22 +99,22 @@ export default defineComponent({
                 this.error = true;
                 return;
             }
-            this.globalStore.currentStatus = await this.nocturne.ccLib.getPlayStatus();
-            this.globalStore.currentLength = await this.nocturne.ccLib.getLength();
-            this.globalStore.currentTime = await this.nocturne.ccLib.getTime();
-            this.globalStore.currentVolume = await this.nocturne.ccLib.getVolume();
-            this.globalStore.currentSpeed = await this.nocturne.ccLib.getSpeed();
+            this.globalStore.currentStatus = await this.nocturne.player.getPlayStatus();
+            this.globalStore.currentLength = await this.nocturne.player.getLength();
+            this.globalStore.currentTime = await this.nocturne.player.getTime();
+            this.globalStore.currentVolume = await this.nocturne.player.getVolume();
+            this.globalStore.currentSpeed = await this.nocturne.player.getSpeed();
             this.globalStore.currentSong = song;
         },
         async playNext() {
             this.autoPlaying = true;
             if (this.songs.length == 0) {
-                await this.nocturne.ccLib.stop();
-                this.globalStore.currentStatus = await this.nocturne.ccLib.getPlayStatus();
-                this.globalStore.currentLength = await this.nocturne.ccLib.getLength();
-                this.globalStore.currentTime = await this.nocturne.ccLib.getTime();
-                this.globalStore.currentVolume = await this.nocturne.ccLib.getVolume();
-                this.globalStore.currentSpeed = await this.nocturne.ccLib.getSpeed();
+                await this.nocturne.player.stop();
+                this.globalStore.currentStatus = await this.nocturne.player.getPlayStatus();
+                this.globalStore.currentLength = await this.nocturne.player.getLength();
+                this.globalStore.currentTime = await this.nocturne.player.getTime();
+                this.globalStore.currentVolume = await this.nocturne.player.getVolume();
+                this.globalStore.currentSpeed = await this.nocturne.player.getSpeed();
                 this.globalStore.currentSong = { id: -1, name: '', path: '' };
                 return;
             }
@@ -127,12 +127,12 @@ export default defineComponent({
         async playPrev() {
             this.autoPlaying = true;
             if (this.songs.length == 0) {
-                await this.nocturne.ccLib.stop();
-                this.globalStore.currentStatus = await this.nocturne.ccLib.getPlayStatus();
-                this.globalStore.currentLength = await this.nocturne.ccLib.getLength();
-                this.globalStore.currentTime = await this.nocturne.ccLib.getTime();
-                this.globalStore.currentVolume = await this.nocturne.ccLib.getVolume();
-                this.globalStore.currentSpeed = await this.nocturne.ccLib.getSpeed();
+                await this.nocturne.player.stop();
+                this.globalStore.currentStatus = await this.nocturne.player.getPlayStatus();
+                this.globalStore.currentLength = await this.nocturne.player.getLength();
+                this.globalStore.currentTime = await this.nocturne.player.getTime();
+                this.globalStore.currentVolume = await this.nocturne.player.getVolume();
+                this.globalStore.currentSpeed = await this.nocturne.player.getSpeed();
                 this.globalStore.currentSong = { id: -1, name: '', path: '' };
                 return;
             }
@@ -145,12 +145,12 @@ export default defineComponent({
         async playFirst() {
             this.autoPlaying = true;
             if (this.songs.length == 0) {
-                await this.nocturne.ccLib.stop();
-                this.globalStore.currentStatus = await this.nocturne.ccLib.getPlayStatus();
-                this.globalStore.currentLength = await this.nocturne.ccLib.getLength();
-                this.globalStore.currentTime = await this.nocturne.ccLib.getTime();
-                this.globalStore.currentVolume = await this.nocturne.ccLib.getVolume();
-                this.globalStore.currentSpeed = await this.nocturne.ccLib.getSpeed();
+                await this.nocturne.player.stop();
+                this.globalStore.currentStatus = await this.nocturne.player.getPlayStatus();
+                this.globalStore.currentLength = await this.nocturne.player.getLength();
+                this.globalStore.currentTime = await this.nocturne.player.getTime();
+                this.globalStore.currentVolume = await this.nocturne.player.getVolume();
+                this.globalStore.currentSpeed = await this.nocturne.player.getSpeed();
                 this.globalStore.currentSong = { id: -1, name: '', path: '' };
                 return;
             }

@@ -1,4 +1,4 @@
-import type { AsyncNocturne } from '@nocturne/fake-backend';
+import type { AsyncNocturne } from '@nocturne/backend';
 import { isProxy, toRaw } from 'vue';
 
 interface VueNocturne {

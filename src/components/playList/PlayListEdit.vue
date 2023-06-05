@@ -131,7 +131,7 @@ import { useGlobalStore } from '@/stores/global';
 import { mapState } from 'pinia';
 import { defineComponent } from 'vue';
 import { Back } from '@element-plus/icons-vue';
-import type { models } from '@nocturne/fake-backend';
+import type { models } from '@nocturne/backend';
 
 export default defineComponent({
     setup() {

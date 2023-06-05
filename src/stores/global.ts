@@ -1,5 +1,5 @@
 import { RawNocturneVueWrapper, type NocturneVueWrapper } from '@/nocturne/NocturneVueWrapper';
-import type { AsyncNocturne, models, PlayStatus } from '@nocturne/fake-backend';
+import type { AsyncNocturne, models, PlayStatus } from '@nocturne/backend';
 import { defineStore } from 'pinia';
 
 export const useGlobalStore = defineStore('global', {

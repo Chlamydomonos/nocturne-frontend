@@ -1,5 +1,5 @@
-const { Nocturne } = require('@nocturne/fake-backend');
-import type { Nocturne as TypeNocturne } from '@nocturne/fake-backend';
+const { Nocturne } = require('@nocturne/backend');
+import type { Nocturne as TypeNocturne } from '@nocturne/backend';
 
 export interface ElectronNocturne {
     buildKeys(): string;
